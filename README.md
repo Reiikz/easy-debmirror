@@ -6,3 +6,6 @@ like: including the dep-11 files, making a checksum of every file in the repo so
 And the best of all, it's free for use and modification!, download and WASTE BANDWITH NOW!
 
 for more serious information read the instructions bundled on the start of the script!
+
+# dependencies
+debmirror, wget, psmisc
