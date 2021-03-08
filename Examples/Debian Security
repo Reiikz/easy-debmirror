@@ -52,7 +52,6 @@ ingnore_time=yes
 how_old=10
 
 # the source of a keyring
-# keyring_source="https://deb.opera.com/archive.key"
 keyring_source="/usr/share/keyrings/debian-archive-keyring.gpg"
 # method of getting this key
 # local	- means it is a file
