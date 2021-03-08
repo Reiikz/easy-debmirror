@@ -1,0 +1,64 @@
+#--------------------------- START OF CINFIG
+
+# repository name, this helps split logfiles and keyrings
+MirrorName="Debian_Main_Repository"
+
+# the architectures you want to mirror, for example: amd64,i386,all are necessary for a typical desktop computer
+arch=all,i386,amd64
+
+# repository sections you want to include in the mirror
+section=main,contrib,non-free
+
+# releases to mirror
+release=buster,buster-updates,buster-backports,bullseye,bullseye-updates,bullseye-backports
+
+# server address, this is where the files will be downloaded from
+# keep in mind the script expects the server to accept anonymous rsync connections, an option to authenticate is yet to be
+# implememted
+server=ftp.br.debian.org
+
+# path to the repository root on the server, if you are mirroring debian from deb.debian.org the root is deb.debian.org/debian,
+# therefore this should be set as /debian
+inPath=/debian
+
+# Protocol to use for transfer (http, ftp, hftp, rsync)
+# note that I didn't add support to servers that require authentication, if I run into the need I may do it
+proto=rsync
+
+# Outpath=              # Directory to store the mirror in
+# Make this a full path to where you want to mirror.
+#
+outPath=/var/www/repo/debian
+
+# cache days, how many days will pass untill the repository integrity is checked again
+# set to 0 to ignore and make checksums every time to every file
+cache_days=10
+
+# hours on which the mirror is allowed to run automatically
+# this gets evaluated in case you run srun, so it only starts in between this window,
+# this is recommended te be setup as a system service so the repo doesn't hang with a stopped updated when power loss
+# mustbe like this: HH/MM in 24 hour format
+#
+# the repo will be updated starting from this hour
+start_hour=03/30
+# the repo can start updating up to this hour
+end_hour=12/00
+
+# ignore time restriction and run anyway if more than a certain amount has passed since the last successful update
+# yes = ignore the time if the last update is too old
+# no = check time restriction no matter how old the repository
+ingnore_time=yes
+
+# how old the last update has to be (in hours) to ignore the time restriction
+# I set it to 20 hours since apt will refuse to use a repository that is 24 hours old
+how_old=20
+
+# the source of a keyring
+# keyring_source="https://deb.opera.com/archive.key"
+keyring_source="/usr/share/keyrings/debian-archive-keyring.gpg"
+# method of getting this key
+# local	- means it is a file
+# http	- it will be downloaded through wget
+keyring_source_type="local"
+
+#------------------------------- END OF CONFIG
